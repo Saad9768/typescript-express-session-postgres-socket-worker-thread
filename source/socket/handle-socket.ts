@@ -1,4 +1,3 @@
-
 import { Server as SocketServer, Socket } from 'socket.io';
 import { sessionMiddleware } from '../middleware/session-middleware';
 import sharedsession from 'express-socket.io-session';
@@ -23,7 +22,7 @@ const initSocket = (httpServer: HttpServer) => {
         // socket.handshake.session.socketId = socket.id;
         // socket.handshake.session.save();
 
-        const { request } = socket
+        const { request } = socket;
         request.session.socketId = socket.id;
         request.session.save();
         socket.on('disconnect', () => {
@@ -41,5 +40,3 @@ const sendMessage = (eventName: string, data: object): void => {
     io.emit(eventName, data);
 };
 export { initSocket, sendMessage };
-
-

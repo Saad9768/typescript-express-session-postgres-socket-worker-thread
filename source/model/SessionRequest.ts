@@ -1,10 +1,10 @@
 import type { IncomingMessage } from 'http';
 import type { SessionData } from 'express-session';
 import type { Socket } from 'socket.io';
-declare module "express-session" {
+declare module 'express-session' {
     interface SessionData {
         socketId: string;
-        save(): void
+        save(): void;
     }
 }
 
@@ -16,10 +16,9 @@ declare module "express-session" {
 //     request: SessionIncomingMessage
 // }
 
-
 declare module 'node:http' {
     interface IncomingMessage {
-        session: SessionData
+        session: SessionData;
     }
 }
 

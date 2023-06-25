@@ -9,8 +9,8 @@ const processBatchWise = async (obj: any, username: string) => {
             pass: '<password>'
         }
     });
-    const bulks = [];     
-    const bulkSize = 2;  
+    const bulks = [];
+    const bulkSize = 2;
     const finalLength = Math.ceil(obj.toEmail.length / bulkSize);
     for (let i = 0; i < finalLength; i++) {
         bulks.push(obj.toEmail.slice(i * bulkSize, (i + 1) * bulkSize));

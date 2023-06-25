@@ -10,8 +10,8 @@ import createError from 'http-errors';
 const NAMESPACE = 'Email Controller';
 
 const sendEmailRequestHandler = async (req: Request, res: Response) => {
-    const { username } = req.user as UserDetail
-    const { socketId } = req.session
+    const { username } = req.user as UserDetail;
+    const { socketId } = req.session;
 
     try {
         sendMessage(username, {
@@ -37,7 +37,7 @@ const sendEmailRequestHandler = async (req: Request, res: Response) => {
         return res.status(200).send({ msg: 'Email Processing' });
     } catch (error) {
         logError(NAMESPACE, `error emailFunction ::`, error);
-        throw createError(error && getErrorStatus(error) ? getErrorStatus(error) : 500, 'Internal Server Error')
+        throw createError(error && getErrorStatus(error) ? getErrorStatus(error) : 500, 'Internal Server Error');
     }
 };
 const getErrorStatus = (error: unknown) => {

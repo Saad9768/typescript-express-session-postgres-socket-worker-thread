@@ -1,4 +1,3 @@
-
 import 'express-async-errors';
 import { createServer, Server } from 'http';
 import bodyParser from 'body-parser';
@@ -23,7 +22,7 @@ app.use(sessionMiddleware);
 app.use(cookieParser('9ad4f7b1-d4bd-4f8c-8536-ec7b1b52b762'));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(helmet())
+app.use(helmet());
 
 passport.use(
     new customstrategy.Strategy((username: string, password: string, done) => {
@@ -33,7 +32,6 @@ passport.use(
 );
 
 passport.serializeUser((user: Express.User, done) => done(null, user));
-
 
 passport.deserializeUser((user: Express.User, done) => done(null, user));
 
@@ -75,14 +73,14 @@ const isAuthenticate = (req: Request, res: Response, next: NextFunction) => {
     }
 };
 app.post('/api/login', passport.authenticate('local'), (req: Request, res: Response) => {
-    const { username } = req.user as UserDetail
+    const { username } = req.user as UserDetail;
     res.status(200).json({
         username
     });
 });
 
 app.get('/api/userInfo', isAuthenticate, (req: Request, res: Response) => {
-    const { username } = req.user as UserDetail
+    const { username } = req.user as UserDetail;
     res.status(200).json({
         username
     });
