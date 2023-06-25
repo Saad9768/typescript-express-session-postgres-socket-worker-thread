@@ -4,7 +4,8 @@
   "description": "",
   "main": "source/index.ts",
   "scripts": {
-    "build": "prettier --write source/ && tsc",
+    "build": "tsc",
+    "prettier": "prettier --write source/ ",
     "start": "ts-node source/index.ts",
     "dev": "nodemon source/index.ts",
     "test": "mocha --require ts-node/register source/test/*",
