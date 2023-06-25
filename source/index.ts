@@ -13,6 +13,7 @@ import { initSocket } from './socket/handle-socket';
 import { sessionMiddleware } from './middleware/session-middleware';
 import { UserDetail } from './model/HandleSession.interface';
 import helmet from 'helmet';
+import { errorNotAuthenticated } from './handler/error';
 
 const NAMESPACE = 'Server';
 const app = express();
@@ -65,8 +66,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 const isAuthenticate = (req: Request, res: Response, next: NextFunction) => {
     if (!req.isAuthenticated()) {
-        logInfo(NAMESPACE, 'Request is not authenticated');
-        return res.redirect('/login');
+        logError(NAMESPACE, 'Request is not authenticated');
+        throw errorNotAuthenticated('Request is not authenticated', NAMESPACE);
     } else {
         next();
     }
@@ -91,10 +92,10 @@ app.get('/api/userInfo', isAuthenticate, (req: Request, res: Response) => {
 app.use('/api', isAuthenticate, emailRoutes);
 
 /** Error handling */
-app.use((err: Error, req: Request, res: Response) => {
-    logError(NAMESPACE, err.toString(), err);
+app.use((req: Request, res: Response) => {
+    const error = new Error('Not found');
     res.status(404).json({
-        message: err.message
+        message: error.message
     });
 });
 

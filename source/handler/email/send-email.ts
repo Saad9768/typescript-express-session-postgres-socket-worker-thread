@@ -1,15 +1,15 @@
-import { logInfo, logError } from '../config/logging';
+import { logInfo, logError } from '../../config/logging';
 import { Request, Response } from 'express';
 import { join } from 'path';
 const workerPath = join(__dirname, '../worker/worker.js');
 import { Worker } from 'worker_threads';
-import { sendMessage } from '../socket/handle-socket';
-import { UserDetail } from '../model/HandleSession.interface';
+import { sendMessage } from '../../socket/handle-socket';
+import { UserDetail } from '../../model/HandleSession.interface';
 import createError from 'http-errors';
 
-const NAMESPACE = 'Email Controller';
+const NAMESPACE = 'send-email';
 
-const sendEmailRequestHandler = async (req: Request, res: Response) => {
+const sendEmail = async (req: Request, res: Response) => {
     const { username } = req.user as UserDetail;
     const { socketId } = req.session;
 
@@ -48,4 +48,4 @@ const getErrorStatus = (error: unknown) => {
     }
 };
 
-export { sendEmailRequestHandler };
+export { sendEmail };
