@@ -21,7 +21,7 @@ const sessionMiddleware = session({
             password: 'saadsaad',
             host: 'localhost',
             port: 5432,
-            database: 'email-db'
+            database: 'email'
         }),
         tableName: 'sessions'
     })

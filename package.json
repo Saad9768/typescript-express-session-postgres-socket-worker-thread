@@ -4,9 +4,10 @@
   "description": "",
   "main": "source/index.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "./node_modules/.bin/tsc",
     "prettier": "prettier --write source/ ",
-    "start": "ts-node source/index.ts",
+    "start": "node build/index.js",
+    "startDev": "ts-node source/index.ts",
     "dev": "nodemon source/index.ts",
     "test": "mocha --require ts-node/register source/test/*",
     "lint": "eslint . --ext .ts"
