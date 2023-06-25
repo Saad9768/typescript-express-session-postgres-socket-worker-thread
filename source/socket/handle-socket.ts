@@ -3,7 +3,6 @@ import { sessionMiddleware } from '../middleware/session-middleware';
 import sharedsession from 'express-socket.io-session';
 import { logInfo, logError } from '../config/logging';
 import { Server as HttpServer } from 'http';
-// import { SessionSocket } from '../model/SessionRequest';
 import { Request, Response, NextFunction } from 'express';
 
 const NAMESPACE = 'handle-socket';

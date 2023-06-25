@@ -1,7 +1,6 @@
 import 'express-async-errors';
 import { createServer, Server } from 'http';
 import bodyParser from 'body-parser';
-// import express from 'express';
 import express, { NextFunction, Request, Response } from 'express';
 import { logInfo, logError } from './config/logging';
 import config from './config/config';
