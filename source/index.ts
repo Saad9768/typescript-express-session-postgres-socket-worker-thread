@@ -11,7 +11,7 @@ import passport from 'passport';
 import customstrategy from 'passport-local';
 import { initSocket } from './socket/handle-socket';
 import { sessionMiddleware } from './middleware/session-middleware';
-import { UserDetail } from './model/SessionRequest';
+import { UserDetail } from './model/HandleSession.interface';
 import helmet from 'helmet';
 
 const NAMESPACE = 'Server';

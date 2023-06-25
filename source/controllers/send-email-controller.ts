@@ -4,7 +4,7 @@ import { join } from 'path';
 const workerPath = join(__dirname, '../worker/worker.js');
 import { Worker } from 'worker_threads';
 import { sendMessage } from '../socket/handle-socket';
-import { UserDetail } from '../model/SessionRequest';
+import { UserDetail } from '../model/HandleSession.interface';
 import createError from 'http-errors';
 
 const NAMESPACE = 'Email Controller';
